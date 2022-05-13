@@ -1,0 +1,25 @@
+﻿
+@{
+}
+
+@model List<CheeseMVCPersistingObjects.Models.Cheese>
+
+<h1>@ViewBag.title</h1>
+
+<form asp-controller="Cheese" asp-action="Remove" method="post">
+   
+    <div class="form-group">
+         @foreach (Cheese item in Model)
+            {
+                <input type="checkbox" name="cheesesIds" id="@item.Id" value="@item.Id"/>
+                <label for="@item.Id">@item.Name</label>
+                <br />
+            }
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-outline-danger">Eliminar seleccion(es)</button>
+    </div>
+
+</form>
+
+<a class="btn btn-outline-danger" asp-controller="Cheese" asp-action="Index">Cancelar</a>

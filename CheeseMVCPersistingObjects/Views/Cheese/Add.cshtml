@@ -1,0 +1,38 @@
+﻿
+@{
+}
+
+@model CheeseMVCPersistingObjects.ViewModel.AddCheeseViewModel
+
+<h1>@ViewBag.title</h1>
+
+<form asp-controller="Cheese" asp-action="Add" method="post">
+
+    
+
+    <div class="form-group">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="form-label"></label>
+        <input asp-for="Description" class="form-control"/>
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryId"></label>
+        <select asp-for="CategoryId" asp-items="Model.CheeseCategories"></select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-outline-primary">Agregar</button>
+    </div>
+</form>
+
+<br />
+
+<a class="btn btn-outline-danger" asp-controller="Cheese" asp-action="Index">Cancelar</a>
+

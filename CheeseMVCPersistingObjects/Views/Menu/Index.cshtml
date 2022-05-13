@@ -1,0 +1,20 @@
+﻿
+@{
+}
+
+@model List<CheeseMVCPersistingObjects.Models.Menu>
+
+<h1>@ViewBag.title</h1>
+
+@if(Model.Count == 0)
+{
+    <h4>Aun no hay menus registrados</h4>
+}
+
+<a asp-controller="Menu" asp-action="Add">Agregar Menu</a>
+
+@foreach (Menu item in Model)
+{
+    <li><a asp-controller="Menu" asp-action="ViewMenu" asp-route-id="@item.Id">@item.Name</a></li>
+}
+

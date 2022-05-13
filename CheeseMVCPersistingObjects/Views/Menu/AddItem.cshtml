@@ -1,0 +1,23 @@
+﻿
+@{
+}
+
+@model CheeseMVCPersistingObjects.ViewModel.AddMenuItemViewModel
+
+<h1>@ViewBag.title</h1>
+
+
+<form asp-controller="Menu" asp-action="AddItem" method="post">
+    <div class="form-group">
+        <label asp-for="CheeseId">Escoger Queso</label>
+        <select asp-for="CheeseId" asp-items="@Model.Cheeses"></select>
+        <span asp-validation-for="CheeseId"></span>
+        <input type="hidden" name="MenuId" value="@Model.MenuId"/>
+    </div>
+    <div class="form-control">
+        
+        <button type="submit" class="btn btn-outline-primary">Agregar Queso</button>
+    </div>
+</form>
+
+<a class="btn btn-outline-danger" asp-controller="Menu" asp-action="Index">Cancelar</a>

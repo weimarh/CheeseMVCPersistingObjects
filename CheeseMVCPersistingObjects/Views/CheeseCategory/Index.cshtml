@@ -1,0 +1,35 @@
+﻿
+@{
+}
+
+@model List<CheeseMVCPersistingObjects.Models.CheeseCategory>
+
+<h1>@ViewBag.title</h1>
+
+@if(Model.Count == 0)
+{
+    <h4>Aun no hay categorias registradas!</h4>
+}
+
+<a asp-controller="CheeseCategory" asp-action="Add">Agregar Categoria</a>
+
+<br />
+
+
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <th>Opciones</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td><form asp-controller="CheeseCategory" asp-action="Remove" method="post" asp-route-categoriesId="@item.Id"><button type="submit" class="btn btn-outline-danger" onclick="return confirm('Esta seguro que quiere eliminar esta categoria?')">Delete</button></form></td>
+            <td><a asp-controller="Cheese" asp-action="Category" asp-route-id="@item.Id" class="btn btn-outline-primary">Detalles</a></td>
+        </tr>
+    }
+</table>
+
+
+
